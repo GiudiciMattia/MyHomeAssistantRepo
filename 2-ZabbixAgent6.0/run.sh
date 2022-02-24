@@ -38,4 +38,4 @@ echo "TLSPSKIdentity=PSK001" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSPSKFile=/etc/zabbix/zabbix_agent.psk" >> "${ZABBIX_CONFIG_FILE}"
 
 # Run zabbix-agent2 in foreground
-exec su zabbix -s /bin/ash -c "zabbix_agent2 -f"
+exec su zabbix -s /bin/ash -c "zabbix_agentd -f"
