@@ -1,7 +1,7 @@
 name: "My Cloud9"
 description: "My Cloud9"
 version: "0.0.20"
-slug: "myCloud9"
+slug: "mycloud9"
 arch:
   - aarch64
   - amd64
