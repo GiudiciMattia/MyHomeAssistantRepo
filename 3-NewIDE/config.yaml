@@ -1,0 +1,28 @@
+name: "New IDE"
+description: "New IDE"
+version: "0.0.1B"
+slug: "new_ide"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: before
+ports:
+  8321/tcp: 8321
+map:
+  - config:rw
+  - ssl  
+options:
+  beer: true
+  wine: true
+  liquor: false
+  name: "world"
+  year: 2017
+schema:
+  beer: bool
+  wine: bool
+  liquor: bool
+  name: str
+  year: int
