@@ -1,19 +1,14 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-ARG BUILD_ARCH
-ARG BUILD_VERSION
-
-LABEL maintainer "Mattia Giudici <mattia.giudici@outlook.com>"
-
-ENV LANG C.UTF-8
-
 # Install requirements for add-on
-RUN apk add --no-cache jq zabbix-agent2 && \
-    apk add --no-cache mc && \
-    apk add --no-cache nmap && \
-    addgroup -g 1003 docker && \
-    addgroup zabbix docker
+RUN \
+  apk add --no-cache \
+    python3
+
+# Python 3 HTTP Server serves the current working dir
+# So let's set it to our add-on persistent data directory.
+WORKDIR /data
 
 # Copy data for add-on
 COPY run.sh /
