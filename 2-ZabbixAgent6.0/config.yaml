@@ -11,3 +11,9 @@ arch:
 startup: before
 ports:
   10050/tcp: 10050
+options:
+  server: "zabbix server"
+  hostname: "hostname client"
+schema:
+  server: str
+  hostname: str
