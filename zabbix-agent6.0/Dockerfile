@@ -10,6 +10,8 @@ ENV LANG C.UTF-8
 
 # Install requirements for add-on
 RUN apk add --no-cache jq zabbix-agent2 && \
+    apk add --no-cache mc && \
+    apk add --no-cache nmap && \
     addgroup -g 1003 docker && \
     addgroup zabbix docker
 
