@@ -1,6 +1,6 @@
 name: "New IDE"
 description: "New IDE"
-version: "0.0.12B"
+version: "0.0.13B"
 slug: "new_ide"
 arch:
   - aarch64
