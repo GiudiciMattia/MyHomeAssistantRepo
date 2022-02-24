@@ -2,12 +2,9 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Install requirements for add-on
-# Install requirements for add-on
-RUN apk add --no-cache jq zabbix-agent2 && \
+RUN apk add --no-cache jq zabbix-agent2 mc nmap && \
     addgroup -g 1003 docker && \
     addgroup zabbix docker
-
-WORKDIR /data
 
 # Copy data for add-on
 COPY run.sh /
