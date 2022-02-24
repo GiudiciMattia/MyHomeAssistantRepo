@@ -1,6 +1,6 @@
 name: "My Cloud9"
 description: "My Cloud9"
-version: "0.1.0"
+version: "0.1.1"
 slug: "mycloud9"
 arch:
   - aarch64
@@ -9,6 +9,7 @@ arch:
   - armv7
   - i386
 ingress: true
+ingress_port: 80
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
 startup: before
 ports:
