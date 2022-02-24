@@ -1,6 +1,6 @@
 name: "New IDE"
 description: "New IDE"
-version: "0.0.4B"
+version: "0.0.5B"
 slug: "new_ide"
 arch:
   - aarch64
@@ -11,7 +11,7 @@ arch:
 startup: before
 ports:
   8321/tcp: 8321
-image: "lscr.io/linuxserver/cloud9"
+image: "cloud9/shared"
 map:
   - config:rw
   - ssl  
