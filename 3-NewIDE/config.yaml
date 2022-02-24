@@ -11,7 +11,7 @@ arch:
 startup: before
 ports:
   8321/tcp: 8321
-image: lscr.io/linuxserver/cloud9
+image: "lscr.io/linuxserver/cloud9"
 map:
   - config:rw
   - ssl  
