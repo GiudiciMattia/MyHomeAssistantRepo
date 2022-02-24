@@ -23,10 +23,16 @@
   "image": "pschmitt/home-assistant-addon-{arch}-zabbix-agent2",
   "options": {
     "server": "zabbix-server.local",
-    "hostname": "homeassistant"
+    "hostname": "homeassistant",
+    "TLSConnect": "psk",
+    "TLSAccept": "psk",
+    "TLSPSKIdentity": "zabbix_agent.psk"
   },
   "schema": {
     "server": "str",
-    "hostname": "str"
+    "hostname": "str",
+    "TLSConnect": "str",
+    "TLSAccept": "str",
+    "TLSPSKIdentity": "str"
   }
 }
