@@ -1,6 +1,6 @@
 {
   "name": "zabbix-agent6.0",
-  "version": "1.1",
+  "version": "1.2",
   "slug": "zabbix-agent6.0",
   "description": "Zabbix agent 6.0",
   "arch": [
