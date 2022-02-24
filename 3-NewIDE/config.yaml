@@ -1,6 +1,6 @@
 name: "New IDE"
 description: "New IDE"
-version: "0.0.1B"
+version: "0.0.2B"
 slug: "new_ide"
 arch:
   - aarch64
@@ -11,6 +11,7 @@ arch:
 startup: before
 ports:
   8321/tcp: 8321
+image: linuxserver/cloud9
 map:
   - config:rw
   - ssl  
