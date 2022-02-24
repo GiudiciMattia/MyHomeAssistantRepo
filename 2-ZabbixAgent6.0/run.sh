@@ -18,10 +18,10 @@ ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agent2.conf
 sed -i 's@^#\?\s\?\(Server\(Active\)\?\)=.*@\1='"${ZABBIX_SERVER}"'@' "$ZABBIX_CONFIG_FILE"
 sed -i 's/^#\?\s\?\(Hostname\)=.*$/\1='"${ZABBIX_HOSTNAME}"'/' "${ZABBIX_CONFIG_FILE}"
 
-# sed -i 's/^#\?\s\?\(TLSConnect\)=.*$/\1='"${ZABBIX_TLSCONNECT}"'/' "${ZABBIX_CONFIG_FILE}"
-# sed -i 's/^#\?\s\?\(TLSAccept\)=.*$/\1='"${ZABBIX_TLSACCEPT}"'/' "${ZABBIX_CONFIG_FILE}"
-# sed -i 's/^#\?\s\?\(TLSPSKIdentity\)=.*$/\1='"${ZABBIX_TLSPSKIDENTITY}"'/' "${ZABBIX_CONFIG_FILE}"
-# sed -i 's/^#\?\s\?\(TLSPSKFile\)=.*$/\1='"${ZABBIX_PSKKEYFILE}"'/' "${ZABBIX_CONFIG_FILE}"
+sed -i 's/^#\?\s\?\(TLSConnect\)=.*$/\1='"${ZABBIX_TLSCONNECT}"'/' "${ZABBIX_CONFIG_FILE}"
+sed -i 's/^#\?\s\?\(TLSAccept\)=.*$/\1='"${ZABBIX_TLSACCEPT}"'/' "${ZABBIX_CONFIG_FILE}"
+sed -i 's/^#\?\s\?\(TLSPSKIdentity\)=.*$/\1='"${ZABBIX_TLSPSKIDENTITY}"'/' "${ZABBIX_CONFIG_FILE}"
+sed -i 's/^#\?\s\?\(TLSPSKFile\)=.*$/\1='"${ZABBIX_PSKKEYFILE}"'/' "${ZABBIX_CONFIG_FILE}"
 
 
 # Run zabbix-agent2 in foreground
