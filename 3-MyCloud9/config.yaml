@@ -9,11 +9,11 @@ arch:
   - armv7
   - i386
 ingress: true
-ingress_port: 80
+ingress_port: 8321
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
 startup: before
 ports:
-  80/tcp: 80
+  8321/tcp: 8321
 map:
   - config:rw
   - ssl  
