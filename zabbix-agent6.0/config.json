@@ -26,13 +26,16 @@
     "hostname": "homeassistant",
     "TLSConnect": "psk",
     "TLSAccept": "psk",
-    "TLSPSKIdentity": "zabbix_agent.psk"
+    "TLSPSKIdentity": "PSK001",
+    "TLSPSKFile": "/etc/zabbix/zabbix_agent.psk"
   },
   "schema": {
     "server": "str",
     "hostname": "str",
     "TLSConnect": "str",
     "TLSAccept": "str",
-    "TLSPSKIdentity": "str"
+    "TLSPSKIdentity": "str",
+    "TLSPSKFile": "str"
   }
 }
+
