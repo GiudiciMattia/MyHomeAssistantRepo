@@ -1,6 +1,6 @@
 name: "New IDE"
 description: "New IDE"
-version: "0.0.14B"
+version: "0.0.15B"
 slug: "new_ide"
 arch:
   - aarch64
@@ -12,7 +12,7 @@ ingress: true
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
 startup: before
 ports:
-  8321/tcp: 8321
+  80/tcp: 80
 map:
   - config:rw
   - ssl  
