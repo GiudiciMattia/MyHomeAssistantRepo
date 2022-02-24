@@ -21,7 +21,7 @@ options:
 schema:
   server: str
   hostname: str
-  TLSConnect: psk
+  TLSConnect: str
   TLSAccept: str
   TLSPSKIdentity: str
   TLSPSKCode: str

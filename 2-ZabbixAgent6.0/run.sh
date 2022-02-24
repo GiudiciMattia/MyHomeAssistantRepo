@@ -24,7 +24,3 @@ sed -i 's/^#\?\s\?\(TLSPSKCode\)=.*$/\1='"${ZABBIX_TLSPSKCODE}"'/' "${ZABBIX_CON
 
 # Run zabbix-agent2 in foreground
 exec su zabbix -s /bin/ash -c "zabbix_agent2 -f"
-
-
-
-
