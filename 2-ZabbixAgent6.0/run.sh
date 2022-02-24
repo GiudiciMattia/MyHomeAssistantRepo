@@ -14,7 +14,7 @@ ZABBIX_PSKKEYFILE="/etc/zabbix/zabbix_agent.psk"
 echo ${ZABBIX_TLSPSKCODE} > "/etc/zabbix/zabbix_agent.psk"
 
 # Update zabbix-agent config
-ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agent2.conf
+ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 # sed -i 's@^#\?\s\?\(Server\(Active\)\?\)=.*@\1='"${ZABBIX_SERVER}"'@' "$ZABBIX_CONFIG_FILE"
 # sed -i 's/^#\?\s\?\(Hostname\)=.*$/\1='"${ZABBIX_HOSTNAME}"'/' "${ZABBIX_CONFIG_FILE}"
 
