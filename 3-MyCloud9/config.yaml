@@ -1,5 +1,5 @@
 name: "My Cloud9"
-version: "0.1.9b"
+version: "0.2.0b"
 slug: "mycloud9"
 description: "My Cloud 9"
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
@@ -17,7 +17,7 @@ homeassistant_api: true
 auth_api: true
 startup: before
 ports:
-  80/tcp: null
+  80/tcp: 80
 ports_description:
   80/tcp: Web interface (Not required for Ingress)  
 map:
