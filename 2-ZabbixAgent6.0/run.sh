@@ -23,37 +23,20 @@ echo ${ZABBIX_TLSPSKCODE} > "/etc/zabbix/zabbix_agent.psk"
 # Update zabbix-agent config
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 
-# # # EnableRemoteCommands=1
-# # # Server=zabbix-proxy-1.winsite.mshome.local
-# # # ServerActive=zabbix-proxy-1.winsite.mshome.local
-# # # Hostname=DCBSX001.winsite.mshome.local
-# # # StartAgents=3
-# # # RefreshActiveChecks=120
-# # # BufferSend=5
-# # # BufferSize=100
-# # # Timeout=3
-# # # TLSConnect=psk
-# # # TLSAccept=psk
-# # # TLSPSKIdentity=PSK001
-# # # TLSPSKFile=/etc/zabbix/zabbix_agent.psk
-
-
-# sed -i 's@^#\?\s\?\(Server\(Active\)\?\)=.*@\1='"${ZABBIX_SERVER}"'@' "$ZABBIX_CONFIG_FILE"
-# sed -i 's/^#\?\s\?\(Hostname\)=.*$/\1='"${ZABBIX_HOSTNAME}"'/' "${ZABBIX_CONFIG_FILE}"
-# sed -i 's/^#\?\s\?\(TLSConnect\)=.*$/\1='"${ZABBIX_TLSCONNECT}"'/' "${ZABBIX_CONFIG_FILE}"
-# sed -i 's/^#\?\s\?\(TLSAccept\)=.*$/\1='"${ZABBIX_TLSACCEPT}"'/' "${ZABBIX_CONFIG_FILE}"
-# echo "TLSPSKIdentity=PSK001" >> "${ZABBIX_CONFIG_FILE}"
-# echo "TLSPSKFile=/etc/zabbix/zabbix_agent.psk" >> "${ZABBIX_CONFIG_FILE}"
-#echo "ControlSocket=/run/zabbix/zabbix_agent2.sock" >> "${ZABBIX_CONFIG_FILE}"
-
-echo "Hostname=srvlnxhassio01.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
-echo "LogFile=/var/log/zabbix/zabbix_agent2.log" >> "${ZABBIX_CONFIG_FILE}"
-echo "Server=zabbix-proxy-1.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
-echo "ServerActive=zabbix-proxy-1.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
+echo "EnableRemoteCommands=$ZABBIX_REMCOMM" >> "${ZABBIX_CONFIG_FILE}"
+echo "Server=$ZABBIX_SERVER" >> "${ZABBIX_CONFIG_FILE}"
+echo "ServerActive=$ZABBIX_SERVERACTIVE" >> "${ZABBIX_CONFIG_FILE}"
+echo "Hostname=$ZABBIX_HOSTNAME" >> "${ZABBIX_CONFIG_FILE}"
+echo "StartAgents=$ZABBIX_STARTAGENT" >> "${ZABBIX_CONFIG_FILE}"
+echo "RefreshActiveChecks=$ZABBIX_REFRESHACTIVECHECKS" >> "${ZABBIX_CONFIG_FILE}"
+echo "BufferSend=$ZABBIX_BUFFERSEND" >> "${ZABBIX_CONFIG_FILE}"
+echo "BufferSize=$ZABBIX_BUFFERSIZE" >> "${ZABBIX_CONFIG_FILE}"
+echo "Timeout=$ZABBIX_TIMEOUT" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSAccept=psk" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSConnect=psk" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSPSKIdentity=PSK001" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSPSKFile=/etc/zabbix/zabbix_agent.psk" >> "${ZABBIX_CONFIG_FILE}"
+echo "LogFile=/var/log/zabbix/zabbix_agentd.log" >> "${ZABBIX_CONFIG_FILE}"
 
 # Run zabbix-agent2 in foreground
 exec su zabbix -s /bin/ash -c "zabbix_agentd -f"
