@@ -4,7 +4,7 @@ FROM $BUILD_FROM
 #Add nginx and create the run folder for nginx.
 RUN \
   apk --no-cache add \
-    nginx \
+    nginx mc nmap\
   \
   && mkdir -p /run/nginx
 
