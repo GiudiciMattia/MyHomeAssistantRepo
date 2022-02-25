@@ -1,13 +1,19 @@
-name: "My Cloud9"
-version: "0.1.3"
-slug: "mycloud9"
-description: "My Cloud9"
-url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
+name: Log Viewer
+version: dev
+slug: logviewer
+description: Browser-based log utility for Home Assistant
+url: https://github.com/hassio-addons/addon-log-viewer
 init: false
 ingress: true
 ingress_stream: true
-panel_icon: mdi:cloud-upload
+panel_icon: mdi:text-box-outline
 homeassistant: 0.92.0b2
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
 homeassistant_api: true
 auth_api: true
 ports:
@@ -16,12 +22,14 @@ ports_description:
   80/tcp: Web interface (Not required for Ingress)
 map:
   - config
+  - share
   - ssl
 options:
   ssl: true
   certfile: fullchain.pem
   keyfile: privkey.pem
 schema:
+  log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
   certfile: str
   keyfile: str
