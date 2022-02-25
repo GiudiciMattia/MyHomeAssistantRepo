@@ -1,5 +1,5 @@
 name: "My Cloud9"
-version: "0.1.6"
+version: "0.1.8"
 slug: "mycloud9"
 description: "My Cloud 9"
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
@@ -15,7 +15,7 @@ arch:
   - i386
 startup: before
 ports:
-  8321/tcp: 8321
+  80/tcp: 80
 map:
   - config:rw
   - ssl  
