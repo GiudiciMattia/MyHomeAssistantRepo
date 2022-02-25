@@ -1,13 +1,10 @@
-name: "4-TestHass.io-Ingress"
-description: "4-TestHass.io-Ingress"
-version: "0.0.0"
-slug: "4_testhassio.io-ingress"
+name: "Ingress Example"
+version: "1.0.0"
+slug: "nginx-ingress-example"
+description: "Ingress testing"
 arch:
-  - aarch64
   - amd64
   - armhf
   - armv7
   - i386
-startup: before
-ports:
-  8888/tcp: 8888
+ingress: true
