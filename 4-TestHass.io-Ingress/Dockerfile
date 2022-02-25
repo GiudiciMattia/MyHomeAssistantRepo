@@ -8,6 +8,8 @@ RUN \
   \
   && mkdir -p /run/nginx
 
+WORKDIR /data
+
 #Copy our conf into the nginx http.d folder.
 COPY ingress.conf /etc/nginx/http.d/
 

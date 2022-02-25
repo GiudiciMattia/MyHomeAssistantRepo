@@ -1,5 +1,5 @@
 name: "Ingress Example"
-version: "1.0.0"
+version: "0.0.2"
 slug: "nginx-ingress-example"
 description: "Ingress testing"
 arch:
@@ -8,3 +8,9 @@ arch:
   - armv7
   - i386
 ingress: true
+map:
+ - ssl
+ - addons
+ - backup
+ - share
+ - media
