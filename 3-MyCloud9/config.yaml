@@ -1,5 +1,5 @@
 name: "My Cloud9"
-version: "0.1.5"
+version: "0.1.6"
 slug: "mycloud9"
 description: "My Cloud 9"
 url: https://github.com/GiudiciMattia/MyHomeAssistantRepo/tree/main/3-NewIDE
@@ -13,11 +13,9 @@ arch:
   - armhf
   - armv7
   - i386
-homeassistant_api: true
-auth_api: true
+startup: before
 ports:
-  80/tcp: null
-ports_description:
-  80/tcp: Web interface (Not required for Ingress)
+  8321/tcp: 8321
 map:
-  - config
+  - config:rw
+  - ssl  
