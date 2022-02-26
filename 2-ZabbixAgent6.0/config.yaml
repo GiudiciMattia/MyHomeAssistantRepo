@@ -1,6 +1,6 @@
 name: "Zabbix Agent 6.0"
 description: "Zabbix Agent 6.0"
-version: "0.2.2"
+version: "0.2.3"
 slug: "zabbixagent6"
 arch:
   - aarch64

@@ -16,7 +16,6 @@ echo ${ZABBIX_TLSPSKCODE} > "/etc/zabbix/zabbix_agent.psk"
 # Update zabbix-agent config
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 
-
 # # # EnableRemoteCommands=1
 
 # # # ##### Passive checks related
@@ -53,16 +52,6 @@ ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 # # # TLSAccept=psk
 # # # TLSPSKIdentity=PSK001
 # # # TLSPSKFile=/etc/zabbix/zabbix_agent.psk
-
-
-
-
-
-
-
-
-
-
 
 # sed -i 's@^#\?\s\?\(Server\(Active\)\?\)=.*@\1='"${ZABBIX_SERVER}"'@' "$ZABBIX_CONFIG_FILE"
 # sed -i 's/^#\?\s\?\(Hostname\)=.*$/\1='"${ZABBIX_HOSTNAME}"'/' "${ZABBIX_CONFIG_FILE}"
