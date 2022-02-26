@@ -27,9 +27,8 @@ ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 
 ######### HostnameItem=system.run[hostname -f]
 
-echo "ControlSocket=/run/zabbix/zabbix_agent2.sock" >> "${ZABBIX_CONFIG_FILE}"
 echo "Hostname=srvlnxhassio01.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
-echo "LogFile=/var/log/zabbix/zabbix_agent2.log" >> "${ZABBIX_CONFIG_FILE}"
+echo "LogFile=/var/log/zabbix/zabbix_agentd.log" >> "${ZABBIX_CONFIG_FILE}"
 echo "Server=zabbix-proxy-1.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
 echo "ServerActive=zabbix-proxy-1.winsite.mshome.local" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSAccept=psk" >> "${ZABBIX_CONFIG_FILE}"
