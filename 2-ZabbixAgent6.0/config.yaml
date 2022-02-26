@@ -1,6 +1,6 @@
 name: "Zabbix Agent 6.0"
 description: "Zabbix Agent 6.0"
-version: "0.2.7"
+version: "0.2.8"
 slug: "zabbixagent6"
 arch:
   - aarch64
@@ -13,14 +13,6 @@ ports:
 options:
   server: "zabbix server"
   hostname: "hostname client"
-  TLSConnect: "psk"
-  TLSAccept: "psk"
-  TLSPSKIdentity: "Identity"
-  TLSPSKCode: "Private Key"
 schema:
   server: str
   hostname: str
-  TLSConnect: str
-  TLSAccept: str
-  TLSPSKIdentity: str
-  TLSPSKCode: str
