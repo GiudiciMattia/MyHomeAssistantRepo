@@ -1,6 +1,10 @@
 name: "Zabbix Agent 6.0"
 description: "Zabbix Agent 6.0"
+<<<<<<< HEAD
 version: "0.2.3"
+=======
+version: "0.1.2"
+>>>>>>> parent of 4c7653c (15 commit zabbix)
 slug: "zabbixagent6"
 arch:
   - aarch64

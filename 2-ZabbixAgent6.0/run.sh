@@ -14,6 +14,7 @@ ZABBIX_PSKKEYFILE="/etc/zabbix/zabbix_agent.psk"
 echo ${ZABBIX_TLSPSKCODE} > "/etc/zabbix/zabbix_agent.psk"
 
 # Update zabbix-agent config
+<<<<<<< HEAD
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 
 # # # EnableRemoteCommands=1
@@ -53,6 +54,9 @@ ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 # # # TLSPSKIdentity=PSK001
 # # # TLSPSKFile=/etc/zabbix/zabbix_agent.psk
 
+=======
+ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agent2.conf
+>>>>>>> parent of 4c7653c (15 commit zabbix)
 # sed -i 's@^#\?\s\?\(Server\(Active\)\?\)=.*@\1='"${ZABBIX_SERVER}"'@' "$ZABBIX_CONFIG_FILE"
 # sed -i 's/^#\?\s\?\(Hostname\)=.*$/\1='"${ZABBIX_HOSTNAME}"'/' "${ZABBIX_CONFIG_FILE}"
 # sed -i 's/^#\?\s\?\(TLSConnect\)=.*$/\1='"${ZABBIX_TLSCONNECT}"'/' "${ZABBIX_CONFIG_FILE}"
