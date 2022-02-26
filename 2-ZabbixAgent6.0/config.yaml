@@ -1,6 +1,6 @@
 name: "Zabbix Agent 6.0"
 description: "Zabbix Agent 6.0"
-version: "0.1.2"
+version: "0.2.4"
 slug: "zabbixagent6"
 arch:
   - aarch64
@@ -12,30 +12,16 @@ startup: before
 ports:
   10050/tcp: 10050
 options:
-  EnableRemoteCommands: 1
   server: "zabbix server"
-  server_active: "zabbix server"
-  hostname: "hostname"
-  StartAgents: 3
-  RefreshActiveChecks: 120
-  BufferSend: 5
-  BufferSize: 100
-  Timeout: 3
+  hostname: "hostname client"
   TLSConnect: "psk"
   TLSAccept: "psk"
   TLSPSKIdentity: "Identity"
-  TLSPSKCode: "Preshared Key"
+  TLSPSKCode: "Private Key"
 schema:
-  EnableRemoteCommands: int
   server: str
-  server_active: str
   hostname: str
-  StartAgents: int
-  RefreshActiveChecks: int 
-  BufferSend: int 
-  BufferSize: int 
-  Timeout: int 
-  TLSConnect: str 
-  TLSAccept: str 
-  TLSPSKIdentity: str 
+  TLSConnect: str
+  TLSAccept: str
+  TLSPSKIdentity: str
   TLSPSKCode: str
