@@ -20,6 +20,7 @@ echo "TLSConnect=psk" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSPSKIdentity=PSK001" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSPSKFile=/etc/zabbix/zabbix_agent.psk" >> "${ZABBIX_CONFIG_FILE}"
 
+# aggiunta dns
 echo "nameserver ${NAME_SERVER}" > "/etc/resolv.conf"
 
 # Run zabbix-agent2 in foreground
