@@ -21,7 +21,6 @@ echo "  Hostname: $HOSTNAME"
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
 
 echo "Hostname=${ZABBIX_HOSTNAME}" >> "${ZABBIX_CONFIG_FILE}"
-echo "LogFile=/var/log/zabbix/zabbix_agentd.log" >> "${ZABBIX_CONFIG_FILE}"
 echo "Server=${ZABBIX_SERVER}" >> "${ZABBIX_CONFIG_FILE}"
 echo "ServerActive=${ZABBIX_SERVER_ACTIVE}" >> "${ZABBIX_CONFIG_FILE}"
 echo "TLSAccept=psk" >> "${ZABBIX_CONFIG_FILE}"
