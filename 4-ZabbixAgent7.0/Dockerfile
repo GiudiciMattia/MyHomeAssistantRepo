@@ -1,4 +1,4 @@
-FROM zabbix/zabbix-agent:7.0-alpine
+FROM zabbix/zabbix-agent:alpine-7.0-latest
 
 RUN apk add --no-cache jq
 
