@@ -1,14 +1,14 @@
 name: "Zabbix Agent 7.0"
+version: "0.3.9"
+slug: "zabbixagent7"
 description: "Zabbix Agent 7 Add-on with TLS PSK support"
-version: "0.3.6"
-slug: zabbixagent7
 startup: services
-init: false
-
+boot: auto
 arch:
   - amd64
-  - armv7
   - aarch64
+  - armv7
+init: false
 
 options:
   server: ""
@@ -23,4 +23,3 @@ schema:
   hostname: str
   psk_identity: str?
   psk_secret: str?
-
