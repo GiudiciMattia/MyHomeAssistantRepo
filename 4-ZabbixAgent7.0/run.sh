@@ -9,12 +9,15 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 1
 fi
 
-SERVER=$(jq -r '.server' $CONFIG_FILE)
-SERVER_ACTIVE=$(jq -r '.server_active' $CONFIG_FILE)
-HOSTNAME=$(jq -r '.hostname' $CONFIG_FILE)
-PSK_IDENTITY=$(jq -r '.psk_identity' $CONFIG_FILE)
-PSK_SECRET=$(jq -r '.psk_secret' $CONFIG_FILE)
-DNS_SERVER=$(jq -r '.dns_server' $CONFIG_FILE)
+# Lettura file come root tramite su
+OPTIONS=$(su -c "cat $CONFIG_FILE")
+
+SERVER=$(echo "$OPTIONS" | jq -r '.server')
+SERVER_ACTIVE=$(echo "$OPTIONS" | jq -r '.server_active')
+HOSTNAME=$(echo "$OPTIONS" | jq -r '.hostname')
+PSK_IDENTITY=$(echo "$OPTIONS" | jq -r '.psk_identity')
+PSK_SECRET=$(echo "$OPTIONS" | jq -r '.psk_secret')
+DNS_SERVER=$(echo "$OPTIONS" | jq -r '.dns_server')
 
 echo "Configuration:"
 echo "  Server: $SERVER"
@@ -23,7 +26,7 @@ echo "  Hostname: $HOSTNAME"
 
 if [ "$DNS_SERVER" != "null" ] && [ ! -z "$DNS_SERVER" ]; then
   echo "Overriding DNS to $DNS_SERVER"
-  echo "nameserver $DNS_SERVER" > /etc/resolv.conf
+  su -c "echo \"nameserver $DNS_SERVER\" > /etc/resolv.conf"
 fi
 
 export ZBX_SERVER_HOST="$SERVER"
