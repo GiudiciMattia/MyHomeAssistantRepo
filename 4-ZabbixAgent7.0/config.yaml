@@ -1,6 +1,6 @@
 name: "Zabbix Agent 7.0"
 description: "Zabbix Agent 7 Add-on with TLS PSK support"
-version: "0.2.6"
+version: "0.2.7"
 slug: zabbixagent7
 init: false
 startup: services
@@ -8,9 +8,6 @@ arch:
   - amd64
   - armv7
   - aarch64
-
-map:
-  - config:rw
 
 options:
   server: ""
@@ -26,14 +23,6 @@ schema:
   psk_identity: str?
   psk_secret: str?
 
-environment:
-  ZBX_SERVER_HOST: "[server]"
-  ZBX_ACTIVESERVERS: "[server_active]"
-  ZBX_HOSTNAME: "[hostname]"
-  ZBX_TLSPSKIDENTITY: "[psk_identity]"
-  ZBX_TLSPSK: "[psk_secret]"
-  ZBX_TLSCONNECT: "psk"
-  ZBX_TLSACCEPT: "psk"
 
 ports:
   10050/tcp: 10050
