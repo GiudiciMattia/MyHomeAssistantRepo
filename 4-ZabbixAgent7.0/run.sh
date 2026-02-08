@@ -50,5 +50,4 @@ env | grep ZBX
 
 echo "Starting official Zabbix entrypoint..."
 
-# Qui deleghiamo tutto al docker-entrypoint originale
-exec /usr/bin/docker-entrypoint.sh
+exec /usr/bin/docker-entrypoint.sh zabbix_agentd -f
