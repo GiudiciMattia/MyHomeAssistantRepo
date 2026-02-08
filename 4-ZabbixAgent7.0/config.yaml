@@ -1,0 +1,29 @@
+name: "Zabbix Agent 7.0"
+description: "Zabbix Agent 7 with TLS PSK support"
+version: "0.1.0"
+slug: "zabbixagent7"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+
+ports:
+  10050/tcp: 10050
+
+options:
+  server: "192.168.1.10"
+  server_active: "192.168.1.10"
+  hostname: "homeassistant"
+  psk_identity: ""
+  psk_secret: ""
+  dns_server: ""
+
+schema:
+  server: str
+  server_active: str
+  hostname: str
+  psk_identity: str?
+  psk_secret: str?
+  dns_server: str?
