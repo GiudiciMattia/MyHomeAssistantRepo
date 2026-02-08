@@ -1,6 +1,5 @@
 FROM zabbix/zabbix-agent:7.0-alpine
 
-# Utility opzionali
 RUN apk add --no-cache jq
 
 COPY run.sh /
