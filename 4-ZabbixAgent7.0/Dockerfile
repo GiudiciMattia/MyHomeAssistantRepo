@@ -6,9 +6,11 @@ USER root
 RUN apk add --no-cache jq
 
 # Torniamo subito all’utente originale dell’immagine
-USER zabbix
+
 
 COPY run.sh /run.sh
 RUN chmod +x /run.sh
+
+USER zabbix
 
 ENTRYPOINT ["/run.sh"]
