@@ -1,0 +1,46 @@
+#!/usr/bin/with-contenv sh
+
+CONFIG="/data/options.json"
+
+echo "=== Zabbix Agent 7 Add-on Startup ==="
+
+if [ ! -f "$CONFIG" ]; then
+  echo "ERROR: options.json not found!"
+  sleep 10
+  exit 1
+fi
+
+SERVER=$(jq -r '.server' "$CONFIG")
+SERVER_ACTIVE=$(jq -r '.server_active' "$CONFIG")
+HOSTNAME=$(jq -r '.hostname' "$CONFIG")
+PSK_IDENTITY=$(jq -r '.psk_identity' "$CONFIG")
+PSK_SECRET=$(jq -r '.psk_secret' "$CONFIG")
+
+echo "Loaded configuration:"
+echo "  Server: $SERVER"
+echo "  Server Active: $SERVER_ACTIVE"
+echo "  Hostname: $HOSTNAME"
+
+if [ -z "$SERVER" ] || [ -z "$SERVER_ACTIVE" ] || [ -z "$HOSTNAME" ]; then
+  echo "ERROR: server, server_active and hostname are mandatory"
+  sleep 10
+  exit 1
+fi
+
+export ZBX_SERVER_HOST="$SERVER"
+export ZBX_ACTIVESERVERS="$SERVER_ACTIVE"
+export ZBX_HOSTNAME="$HOSTNAME"
+
+if [ -n "$PSK_IDENTITY" ] && [ -n "$PSK_SECRET" ]; then
+  echo "TLS PSK enabled"
+  export ZBX_TLSCONNECT="psk"
+  export ZBX_TLSACCEPT="psk"
+  export ZBX_TLSPSKIDENTITY="$PSK_IDENTITY"
+  export ZBX_TLSPSK="$PSK_SECRET"
+else
+  echo "TLS PSK not configured"
+fi
+
+echo "Starting Zabbix Agent..."
+
+exec /usr/bin/docker-entrypoint.sh zabbix_agentd -f

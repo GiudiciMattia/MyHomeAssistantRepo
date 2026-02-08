@@ -1,14 +1,11 @@
 FROM zabbix/zabbix-agent:alpine-7.0-latest
 
-# Passiamo temporaneamente a root per installare dipendenze
 USER root
 
+# Installiamo jq per leggere options.json
 RUN apk add --no-cache jq
 
-# Torniamo subito all’utente originale dell’immagine
+# Copiamo la struttura S6
+COPY rootfs /
 
-
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
-
-ENTRYPOINT ["/run.sh"]
+# Lo user sarà gestito dall'entrypoint di Zabbix
