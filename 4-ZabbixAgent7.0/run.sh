@@ -13,9 +13,9 @@ ZABBIX_PSK_IDENTITY=$(jq -r '.psk_identity // empty' "$CONFIG_FILE")
 ZABBIX_PSK_PSK_SECRET=$(jq -r '.psk_secret // empty' "$CONFIG_FILE")
 
 echo "Loaded configuration:"
-echo "  Server: $SERVER"
-echo "  Server Active: $SERVER_ACTIVE"
-echo "  Hostname: $HOSTNAME"
+echo "  Server: $ZABBIX_SERVER"
+echo "  Server Active: $ZABBIX_SERVER_ACTIVE"
+echo "  Hostname: $ZABBIX_HOSTNAME"
 
 # Update zabbix-agent config
 ZABBIX_CONFIG_FILE=/etc/zabbix/zabbix_agentd.conf
