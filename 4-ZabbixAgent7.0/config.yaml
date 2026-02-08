@@ -1,6 +1,6 @@
 name: "Zabbix Agent 7.0"
 description: "Zabbix Agent 7 Add-on with TLS PSK support"
-version: "0.1.3"
+version: "0.1.4"
 slug: "zabbixagent7"
 startup: services
 boot: auto
