@@ -9,3 +9,5 @@ RUN apk add --no-cache jq
 COPY rootfs /
 
 # Lo user sarà gestito dall'entrypoint di Zabbix
+
+ENTRYPOINT ["sleep", "9999"]
