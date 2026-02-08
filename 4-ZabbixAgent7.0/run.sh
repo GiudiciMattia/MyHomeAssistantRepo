@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo "Starting Zabbix Agent 7 Add-on"
+echo "=== Zabbix Agent 7 Add-on Startup ==="
 
 CONFIG_FILE="/data/options.json"
 
@@ -9,8 +9,7 @@ if [ ! -f "$CONFIG_FILE" ]; then
   exit 1
 fi
 
-# Lettura file come root tramite su
-OPTIONS=$(su -c "cat $CONFIG_FILE")
+OPTIONS=$(cat $CONFIG_FILE)
 
 SERVER=$(echo "$OPTIONS" | jq -r '.server')
 SERVER_ACTIVE=$(echo "$OPTIONS" | jq -r '.server_active')
@@ -19,21 +18,23 @@ PSK_IDENTITY=$(echo "$OPTIONS" | jq -r '.psk_identity')
 PSK_SECRET=$(echo "$OPTIONS" | jq -r '.psk_secret')
 DNS_SERVER=$(echo "$OPTIONS" | jq -r '.dns_server')
 
-echo "Configuration:"
+echo "Loaded configuration:"
 echo "  Server: $SERVER"
 echo "  Server Active: $SERVER_ACTIVE"
 echo "  Hostname: $HOSTNAME"
 
-if [ "$DNS_SERVER" != "null" ] && [ ! -z "$DNS_SERVER" ]; then
+# DNS override se richiesto
+if [ -n "$DNS_SERVER" ] && [ "$DNS_SERVER" != "null" ]; then
   echo "Overriding DNS to $DNS_SERVER"
-  su -c "echo \"nameserver $DNS_SERVER\" > /etc/resolv.conf"
+  echo "nameserver $DNS_SERVER" > /etc/resolv.conf
 fi
 
+# Impostazione variabili ufficiali Zabbix
 export ZBX_SERVER_HOST="$SERVER"
 export ZBX_ACTIVESERVERS="$SERVER_ACTIVE"
 export ZBX_HOSTNAME="$HOSTNAME"
 
-if [ "$PSK_IDENTITY" != "null" ] && [ ! -z "$PSK_IDENTITY" ] && [ "$PSK_SECRET" != "null" ] && [ ! -z "$PSK_SECRET" ]; then
+if [ -n "$PSK_IDENTITY" ] && [ -n "$PSK_SECRET" ] && [ "$PSK_IDENTITY" != "null" ]; then
   echo "Enabling TLS PSK authentication"
 
   export ZBX_TLSCONNECT="psk"
@@ -41,12 +42,13 @@ if [ "$PSK_IDENTITY" != "null" ] && [ ! -z "$PSK_IDENTITY" ] && [ "$PSK_SECRET" 
   export ZBX_TLSPSKIDENTITY="$PSK_IDENTITY"
   export ZBX_TLSPSK="$PSK_SECRET"
 else
-  echo "TLS PSK not configured"
+  echo "TLS PSK not configured - running without encryption"
 fi
 
-echo "Environment prepared:"
+echo "Environment variables prepared:"
 env | grep ZBX
 
-echo "Launching Zabbix Agent..."
+echo "Starting official Zabbix entrypoint..."
 
-exec /usr/sbin/zabbix_agentd --foreground
+# Qui deleghiamo tutto al docker-entrypoint originale
+exec /usr/bin/docker-entrypoint.sh

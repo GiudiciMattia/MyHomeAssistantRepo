@@ -9,6 +9,4 @@ RUN chmod +x /run.sh
 
 EXPOSE 10050
 
-USER zabbix
-
 ENTRYPOINT ["/run.sh"]
