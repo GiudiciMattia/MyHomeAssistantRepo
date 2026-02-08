@@ -4,11 +4,6 @@ echo "=== Zabbix Agent 7 Add-on Startup ==="
 
 CONFIG_FILE="/data/options.json"
 
-if [ ! -f "$CONFIG_FILE" ]; then
-  echo "ERROR: options.json not found!"
-  exit 1
-fi
-
 OPTIONS=$(cat $CONFIG_FILE)
 
 SERVER=$(echo "$OPTIONS" | jq -r '.server')
@@ -20,34 +15,21 @@ DNS_SERVER=$(echo "$OPTIONS" | jq -r '.dns_server')
 
 echo "Loaded configuration:"
 echo "  Server: $SERVER"
-echo "  Server Active: $SERVER_ACTIVE"
 echo "  Hostname: $HOSTNAME"
 
-# DNS override se richiesto
-if [ -n "$DNS_SERVER" ] && [ "$DNS_SERVER" != "null" ]; then
+if [ -n "$DNS_SERVER" ]; then
   echo "Overriding DNS to $DNS_SERVER"
   echo "nameserver $DNS_SERVER" > /etc/resolv.conf
 fi
 
-# Impostazione variabili ufficiali Zabbix
-export ZBX_SERVER_HOST="$SERVER"
-export ZBX_ACTIVESERVERS="$SERVER_ACTIVE"
-export ZBX_HOSTNAME="$HOSTNAME"
+echo "Starting official Zabbix entrypoint with forced environment..."
 
-if [ -n "$PSK_IDENTITY" ] && [ -n "$PSK_SECRET" ] && [ "$PSK_IDENTITY" != "null" ]; then
-  echo "Enabling TLS PSK authentication"
-
-  export ZBX_TLSCONNECT="psk"
-  export ZBX_TLSACCEPT="psk"
-  export ZBX_TLSPSKIDENTITY="$PSK_IDENTITY"
-  export ZBX_TLSPSK="$PSK_SECRET"
-else
-  echo "TLS PSK not configured - running without encryption"
-fi
-
-echo "Environment variables prepared:"
-env | grep ZBX
-
-echo "Starting official Zabbix entrypoint..."
-
-exec /usr/bin/docker-entrypoint.sh zabbix_agentd -f
+exec env \
+  ZBX_SERVER_HOST="$SERVER" \
+  ZBX_ACTIVESERVERS="$SERVER_ACTIVE" \
+  ZBX_HOSTNAME="$HOSTNAME" \
+  ZBX_TLSCONNECT="psk" \
+  ZBX_TLSACCEPT="psk" \
+  ZBX_TLSPSKIDENTITY="$PSK_IDENTITY" \
+  ZBX_TLSPSK="$PSK_SECRET" \
+  /usr/bin/docker-entrypoint.sh zabbix_agentd -f
